@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 
 /**
@@ -20,4 +21,12 @@ class User extends Entity
         'admin' => true,
         'bookmarks' => true,
     ];
+    /**
+     * Normally passwords are saved as plain text in the model. We've added this method to hash them.
+     */
+    protected function _setPassword($value)
+    {
+        $hasher = new DefaultPasswordHasher();
+        return $hasher->hash($value);
+    }
 }
