@@ -4,6 +4,10 @@
 </h1>
 
 <section>
+<?php if($user->admin === true): ?>
+  <p><?= h($user->admin) ?></p>
+<?php endif; ?>
+
 <?php foreach ($bookmarks as $bookmark): ?>
     <article>
         <h4><?= $this->Html->link($bookmark->title, $bookmark->url) ?></h4>

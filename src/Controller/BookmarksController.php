@@ -112,10 +112,11 @@ class BookmarksController extends AppController
 
     public function tags()
     {
+        $user = $this->Bookmarks->Users->get(1);
         $tags = $this->request->params['pass'];
         $bookmarks = $this->Bookmarks->find('tagged', [
             'tags' => $tags
         ]);
-        $this->set(compact('bookmarks', 'tags'));
+        $this->set(compact('bookmarks', 'tags', 'user'));
     }
 }
